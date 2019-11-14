@@ -36,7 +36,6 @@ public class NewQuizAppController {
     public String create(@RequestParam String question, @RequestParam boolean answer){
         Quiz quiz = new Quiz(question, answer);
         quizzes.add(quiz);
-
         return "redirect:/page/show";
     }
 
