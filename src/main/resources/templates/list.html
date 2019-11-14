@@ -27,14 +27,14 @@
 <div class="container">
     <h2>クイズ一覧</h2>
     <div th:if="${successMessage}" class="alert alert-success" role="alert">
-        <span th:text="${successMessage}" ></span>
+        <span th:text="${successMessage}"></span>
     </div>
     <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
         <span th:text="${errorMessage}" ></span>
     </div>
     <div class="row">
         <div class="col-md-auto">
-            <a th:herf="@{/page/load}" class="btn btn-light">ファイルを読み込む</a>
+            <a th:href="@{/page/load}" class="btn btn-light">ファイルを読み込む</a>
         </div>
         <div class="col">
             <form th:action="@{/page/save}" method="POST">
