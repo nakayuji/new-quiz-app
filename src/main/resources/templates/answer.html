@@ -18,10 +18,10 @@
 <body>
 <div class="container">
     <p>
-        答え：<span>◯</span>
+        答え：<span th:text="${quiz.answer} ? '◯' : '×'" ></span>
     </p>
-    <p>正解！</p>
-    <a>もう1度遊ぶ</a>
+    <p th:text="${result}" ></p>
+    <a th:href="@{/page/quiz}" >もう1度遊ぶ</a>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

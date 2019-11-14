@@ -21,10 +21,11 @@ public class NewQuizAppController {
     private QuizFileDao quizFileDao = new QuizFileDao();
 
     @GetMapping("/quiz")
-    public Quiz quiz() {
+    public String quiz(Model model) {
         int index = new Random().nextInt(quizzes.size());
 
-        return quizzes.get(index);
+        model.addAttribute("quiz", quizzes.get(index));
+        return "quiz";
     }
 
     @GetMapping("/show")
@@ -41,17 +42,18 @@ public class NewQuizAppController {
     }
 
     @GetMapping("/check")
-    public String check(@RequestParam String question, @RequestParam boolean answer){
+    public String check(Model model, @RequestParam String question, @RequestParam boolean answer){
         for (Quiz quiz: quizzes) {
             if (quiz.getQuestion().equals(question)){
+                model.addAttribute("quiz", quiz);
                 if (quiz.isAnswer() == answer){
-                    return "正解！";
+                    model.addAttribute("result", "正解！");
                 } else {
-                    return "不正解！";
+                    model.addAttribute("result", "不正解！");
                 }
             }
         }
-        return "問題がありません";
+        return "answer";
     }
 
     @PostMapping("/save")
