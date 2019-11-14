@@ -1,20 +1,16 @@
 package com.example.newquizapp;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.lang.model.element.ModuleElement;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Controller
-@RequestMapping("page")
+@RestController
 public class NewQuizAppController {
     private List<Quiz> quizzes = new ArrayList<>();
     private QuizFileDao quizFileDao = new QuizFileDao();
@@ -27,17 +23,14 @@ public class NewQuizAppController {
     }
 
     @GetMapping("/show")
-    public String show(Model model) {
-        model.addAttribute("quizzes", quizzes);
-        return "list";
+    public List<Quiz> show() {
+        return quizzes;
     }
 
     @PostMapping("/create")
-    public String create(@RequestParam String question, @RequestParam boolean answer){
+    public void create(@RequestParam String question, @RequestParam boolean answer){
         Quiz quiz = new Quiz(question, answer);
         quizzes.add(quiz);
-
-        return "redirect:/page/show";
     }
 
     @GetMapping("/check")
