@@ -26,53 +26,18 @@
 <body>
 <div class="container">
     <h2>◯×クイズアプリ</h2>
-    <div th:if="${successMessage}" class="alert alert-success" role="alert">
-        <span th:text="${successMessage}"></span>
-    </div>
-    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
-        <span th:text="${errorMessage}" ></span>
-    </div>
-    <div class="row">
-        <div class="col-md-auto">
-            <a th:href="@{/page/load}" class="btn btn-light">ファイルを読み込む</a>
-        </div>
-        <div class="col">
-            <form th:action="@{/page/save}" method="POST">
-                <button type="submit" class="btn btn-primary">ファイルに保存する</button>
-            </form>
-        </div>
-        <a th:href="@{/page/quiz}">クイズをする</a>
-    </div>
-    <form th:action="@{/page/create}" method="POST" class="create-form">
-        <div class="form-row">
-            <div class="col-8">
-                <input type="text" class="form-control" placeholder="問題文" name="question">
-            </div>
-            <div class="col-2">
-                <select class="form-control" name="answer">
-                    <option value="true" selected>◯</option>
-                    <option value="false">×</option>
-                </select>
-            </div>
-            <div class="col-2">
-                <button type="submit" class="btn btn-primary">登録</button>
-            </div>
-        </div>
-    </form>
-    <table class="table table-bordered list">
-        <thead>
-        <tr>
-            <th scope="col">問題</th>
-            <th scope="col">正解</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="quiz: ${quizzes}">
-            <td th:text="${quiz.question}"></td>
-            <td th:text="${quiz.answer} ? '◯' : '×'"></td>
-        </tr>
-        </tbody>
-    </table>
+    <a th:href="@{/page/quiz}"style="
+    color: #364e96;
+    border: solid 3px #364e96;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    ">クイズをする</a>
+    <a th:href="@{/page/show}" style="
+    color: #364e96;
+    border: solid 3px #364e96;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    ">クイズ一覧・保存に行く</a>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
