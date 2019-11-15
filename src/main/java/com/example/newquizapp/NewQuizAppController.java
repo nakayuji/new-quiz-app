@@ -28,6 +28,12 @@ public class NewQuizAppController {
         return "quiz";
     }
 
+    @GetMapping("/index")
+    public String index(Model model) {
+        model.addAttribute("quizzes", quizzes);
+        return "index";
+    }
+
     @GetMapping("/show")
     public String show(Model model) {
         model.addAttribute("quizzes", quizzes);
